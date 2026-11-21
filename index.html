@@ -49,6 +49,8 @@ section{padding-block:clamp(5rem,11vw,10rem);position:relative}
 .b.p{background:linear-gradient(135deg,var(--neon),var(--sky));color:#07131c;filter:drop-shadow(0 6px 18px rgba(92,214,255,.4));animation:rg 2.6s infinite}
 .b.p::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.7),transparent 70%);transform:translateX(-120%);animation:sh 3.5s infinite}
 .b.p::after{content:"←"}html[dir=ltr] .b.p::after{content:"→"}
+.b.p.mk{background:linear-gradient(135deg,var(--sky),var(--neon));animation-delay:-1.3s}.b.p.mk::before{animation-delay:-1.7s}
+.b.p:focus-visible{outline-color:var(--tx)}
 .b.s{background:var(--gl);border:1px solid var(--gb);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 .b.sm{padding:.7rem 1.2rem;font-size:.9rem}
 .ic{width:2.5rem;height:2.5rem;border-radius:50%;display:grid;place-items:center;background:var(--fb);border:1px solid var(--gb);font-weight:700;font-size:.85rem;transition:.3s}
@@ -98,14 +100,26 @@ html[lang=en] h1{letter-spacing:-.02em}
 html.js .rv{opacity:0;transform:translateY(40px) scale(.97);filter:blur(10px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1),filter .9s;transition-delay:var(--d,0s)}
 html.js .rv.in{opacity:1;transform:none;filter:none}
 .sc,.wc,.rc{height:100%}
-.sc{padding:2rem}.sc h3{font-size:1.2rem;margin-bottom:.5rem}.sc p,.wc p{color:var(--mut);font-size:.98rem}
+.sc{padding:2rem;display:flex;flex-direction:column;align-items:flex-start}.sc p{flex:1}.sc .b{margin-top:1.4rem}.sc h3{font-size:1.2rem;margin-bottom:.5rem}.sc p,.wc p{color:var(--mut);font-size:.98rem}
 .ico{font-size:1.9rem;width:3.6rem;height:3.6rem;display:grid;place-items:center;border-radius:1.1rem;background:var(--fb);margin-bottom:1.2rem;transition:.4s}
 .sc:hover .ico{transform:rotate(-8deg) scale(1.15);box-shadow:0 0 22px rgba(92,214,255,.5)}
-.wc{display:block;padding:.9rem}.wc h3{margin:1rem .4rem .1rem;font-size:1.15rem}.wc p{margin:0 .4rem .5rem;font-size:.92rem}
+.wc{display:flex;flex-direction:column;padding:.9rem}
+.wb{display:flex;flex-direction:column;align-items:flex-start;gap:.5rem;flex:1;padding:1rem .6rem .6rem}
+.wb h3{font-size:1.2rem}.wb p{flex:1}
+.wn{font-weight:800;font-size:2.4rem;line-height:1;color:var(--ac);opacity:.55}
+.wt{font-size:.8rem;font-weight:500;padding:.15rem .8rem;border-radius:99px;background:var(--fb);border:1px solid var(--gb)}
+.wl{position:static;overflow:visible;margin-top:.6rem}.wl::after{content:"";position:absolute;inset:0}
+.wc:has(.wl:focus-visible){outline:2px solid var(--neon);outline-offset:3px}
+.ft{box-shadow:0 10px 40px var(--sh),0 0 0 1px rgba(92,214,255,.35),0 0 36px rgba(92,214,255,.18)}.ft .wb h3{font-size:clamp(1.5rem,3vw,2rem)}
 .art{position:relative;aspect-ratio:16/10;border-radius:1.1rem;overflow:hidden;transition:transform .6s}
-.art::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 22px,rgba(255,255,255,.1) 22px 44px)}
 .wc:hover .art{transform:scale(1.04)}
-.a0{background:linear-gradient(135deg,#1d4a6a,#87B9DB)}.a1{background:linear-gradient(135deg,#122533,#5CD6FF)}.a2{background:linear-gradient(135deg,#87B9DB,#122533)}.a3{background:linear-gradient(135deg,#0f3550,#5CD6FF)}.a4{background:linear-gradient(135deg,#1b3c55,#87B9DB)}
+.art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.b.p.bh{padding:1.05rem 2rem}
+html[dir] .b.p.bh::after{content:"↗";display:inline-block;transition:transform .35s cubic-bezier(.2,1.4,.4,1)}
+.b.p.bh:hover{transform:translateY(-4px) scale(1.06);filter:drop-shadow(0 10px 28px rgba(92,214,255,.7))}
+.b.p.bh:hover::after{transform:translate(3px,-3px) rotate(8deg)}
+.b.p.bh:active{transform:translateY(0) scale(.96);filter:drop-shadow(0 3px 10px rgba(92,214,255,.5))}
+.rc small{color:var(--mut)}.rc .tag{justify-self:start;font-size:.75rem;color:var(--mut);border:1px dashed var(--gb);border-radius:99px;padding:0 .7rem}
 .ab{display:grid;gap:2.5rem;padding:clamp(1.75rem,5vw,3.5rem)}
 @media(min-width:900px){.ab{grid-template-columns:1.2fr 1fr;align-items:center}}
 .tg{display:flex;flex-wrap:wrap;gap:.7rem}
@@ -153,7 +167,7 @@ footer a{display:inline-block;margin:.4rem .9rem;font-weight:500;transition:colo
 .seg button{min-width:2.75rem;height:2.75rem}
 .hero{min-height:auto;padding-top:6.5rem;padding-bottom:3rem}.hg{gap:2.5rem}
 .cr{flex-direction:column}.cr .b{width:100%;min-height:3.25rem}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}.stats b{font-size:1.6rem}.stats span{display:block;font-size:.8rem;line-height:1.5}
+.stats{display:grid;gap:.9rem;margin-top:2.5rem}.stats>div{display:flex;align-items:center;gap:1rem}.stats b{font-size:1.6rem;min-width:3rem}.stats span{font-size:.9rem;line-height:1.5}
 .orb{max-width:17rem}.fc{font-size:.75rem;padding:.4rem .8rem}
 .sc,.rc{padding:1.4rem}.cp span{padding:.7rem 1.1rem}.x{width:2.75rem;height:2.75rem}
 .fab{width:3.3rem;height:3.3rem;inset-block-end:1rem;inset-inline-end:1rem}footer{padding-bottom:7rem}}
@@ -189,8 +203,8 @@ footer a{display:inline-block;margin:.4rem .9rem;font-weight:500;transition:colo
     <span class="bd g" data-h style="--i:0"><i></i><span data-t="bd">متاح لمشاريع جديدة</span></span>
     <h1>تصميم بصري وتسويق ذكي يبني علامات قوية</h1>
     <p class="sub" data-h style="--i:10" data-t="sub">مصمم جرافيك ومسوّق رقمي، بحوّل فكرتك لتصميم احترافي وخطة تسويق توصّلك لعملائك.</p>
-    <div class="cr" data-h style="--i:11"><button class="b p" data-o="d" data-t="c1">اطلب تصميم</button><button class="b s" data-o="m" data-t="c2">اطلب خدمة تسويق</button></div>
-    <div class="stats" data-h style="--i:12"><div><b>1+</b><span data-t="s1">سنة خبرة</span></div><div><b>3</b><span data-t="s2">مجالات: سوشيال، مطبوعات، حملات</span></div><div><b>2</b><span data-t="s3">برامج: Photoshop وIllustrator</span></div></div>
+    <div class="cr" data-h style="--i:11"><button class="b p" data-o="d" data-t="c1">اطلب تصميم</button><button class="b p mk" data-o="m" data-t="c2">اطلب خدمة تسويق</button></div>
+    <div class="stats" data-h style="--i:12"><div><b>1+</b><span data-t="s1">سنة خبرة</span></div><div><b>3</b><span data-t="s2">مجالات: تصميم · ماركتنج · ميديا باينج</span></div><div><b>5</b><span data-t="s3">أدوات: Photoshop · Illustrator · Meta Ads · Ads Library · AI</span></div></div>
   </div>
   <div class="orb" data-h style="--i:3">
     <div class="core g"><div class="lgo"></div></div>
@@ -203,17 +217,18 @@ footer a{display:inline-block;margin:.4rem .9rem;font-weight:500;transition:colo
 
 <div class="mq" aria-hidden="true"><div></div></div>
 
-<section id="services"><div class="w"><div class="sh rv"><h2 data-t="svh">خدماتي</h2><p data-t="svp">كل اللي براندك محتاجه في مكان واحد.</p></div><div class="gr" id="sv"><div class="rv" style="--d:0s"><article class="g tilt sc"><div class="ico">📱</div><h3>سوشيال ميديا</h3><p>بوستات وستوريز وبانرات لإنستجرام وفيسبوك بهوية ثابتة وواضحة.</p></article></div><div class="rv" style="--d:0.08s"><article class="g tilt sc"><div class="ico">🎨</div><h3>هوية بصرية</h3><p>لوجو ونظام هوية كامل يخلّي براندك مميز ومتذكَّر.</p></article></div><div class="rv" style="--d:0.16s"><article class="g tilt sc"><div class="ico">🖨️</div><h3>مطبوعات وتغليف</h3><p>فلايرز وبروشورات وباكدجينج جاهزة للطباعة بألوان مظبوطة.</p></article></div><div class="rv" style="--d:0.24s"><article class="g tilt sc"><div class="ico">📣</div><h3>حملات إعلانية</h3><p>بيلبورد وPOS وتصميمات معارض بتلفت الانتباه من أول نظرة.</p></article></div><div class="rv" style="--d:0.32s"><article class="g tilt sc"><div class="ico">📈</div><h3>تسويق رقمي</h3><p>خطط ومحتوى وإدارة صفحات علشان توصل للعميل المناسب.</p></article></div><div class="rv" style="--d:0.4s"><article class="g tilt sc"><div class="ico">✨</div><h3>ريتاتش وتصميم رقمي</h3><p>ريتاتش وكومبوزيت وأعمال رقمية بجودة عالية.</p></article></div></div></div></section>
+<section id="services"><div class="w"><div class="sh rv"><h2 data-t="svh">خدماتي</h2><p data-t="svp">من التصميم للتسويق والميديا باينج: كل اللي براندك محتاجه في مكان واحد.</p></div><div class="gr" id="sv"><div class="rv" style="--d:0s"><article class="g tilt sc"><div class="ico">🎨</div><h3>التصميم الجرافيكي</h3><p>بوستات وإعلانات وتصميمات بصرية بتلفت الانتباه وبتوصّل رسالتك بوضوح.</p><button class="b s sm" type="button" data-o="d" data-pre="">اطلب الخدمة</button></article></div><div class="rv" style="--d:0.08s"><article class="g tilt sc"><div class="ico">🪪</div><h3>الهويات البصرية</h3><p>لوجو ونظام هوية متكامل يخلّي براندك مميز ومتذكَّر.</p><button class="b s sm" type="button" data-o="d" data-pre="">اطلب الخدمة</button></article></div><div class="rv" style="--d:0.16s"><article class="g tilt sc"><div class="ico">🖨️</div><h3>المطبوعات والتغليف</h3><p>فلايرز وبروشورات وكتالوجات وباكدجينج جاهزة للطباعة بألوان مظبوطة.</p><button class="b s sm" type="button" data-o="d" data-pre="">اطلب الخدمة</button></article></div><div class="rv" style="--d:0.24s"><article class="g tilt sc"><div class="ico">📱</div><h3>السوشيال ميديا</h3><p>بوستات وستوريز وأغلفة بهوية ثابتة على كل منصاتك.</p><button class="b s sm" type="button" data-o="d" data-pre="منشور سوشيال">اطلب الخدمة</button></article></div><div class="rv" style="--d:0.32s"><article class="g tilt sc"><div class="ico">📈</div><h3>التسويق</h3><p>خطة تسويق واضحة تحدد جمهورك ورسالتك وقنوات الوصول ليهم.</p><button class="b s sm" type="button" data-o="m" data-pre="خطة تسويق">اطلب الخدمة</button></article></div><div class="rv" style="--d:0.4s"><article class="g tilt sc"><div class="ico">🎯</div><h3>الميديا باينج</h3><p>إدارة إعلانات ممولة على Meta Ads، وبحث المنافسين عبر Ads Library، وتحسين النتائج بالأرقام.</p><button class="b s sm" type="button" data-o="m" data-pre="ميديا باينج">اطلب الخدمة</button></article></div><div class="rv" style="--d:0.48s"><article class="g tilt sc"><div class="ico">📣</div><h3>حملات الإعلانات</h3><p>حملات متكاملة من الفكرة والتصميم لحد التنفيذ والمتابعة.</p><button class="b s sm" type="button" data-o="m" data-pre="حملات إعلانية">اطلب الخدمة</button></article></div><div class="rv" style="--d:0.56s"><article class="g tilt sc"><div class="ico">🤖</div><h3>أدوات الذكاء الاصطناعي</h3><p>استخدام AI في الأفكار والتحليل والتصميم لتسريع الشغل وتحسين الجودة.</p><button class="b s sm" type="button" data-o="m" data-pre="حلول بالذكاء الاصطناعي">اطلب الخدمة</button></article></div></div></div></section>
 
-<section id="work"><div class="w"><div class="sh rv"><h2 data-t="wkh">أعمالي</h2><p data-t="wkp">لمحة من شغلي على Behance.</p></div><div class="gr wg" id="wk"><div class="rv" style="--d:0s"><a class="g tilt wc" href="https://www.behance.net/mahmoudsalah_" target="_blank" rel="noopener"><div class="art a0"></div><h3>Litmatless</h3><p>هوية بصرية لبراند ملابس رياضية</p></a></div><div class="rv" style="--d:0.08s"><a class="g tilt wc" href="https://www.behance.net/mahmoudsalah_" target="_blank" rel="noopener"><div class="art a1"></div><h3>حملة بيلبورد</h3><p>إعلان خارجي لبراند برجر</p></a></div><div class="rv" style="--d:0.16s"><a class="g tilt wc" href="https://www.behance.net/mahmoudsalah_" target="_blank" rel="noopener"><div class="art a2"></div><h3>حملة معرض</h3><p>حملة كاملة لمعرض أبواب مصفحة</p></a></div><div class="rv" style="--d:0.24s"><a class="g tilt wc" href="https://www.behance.net/mahmoudsalah_" target="_blank" rel="noopener"><div class="art a3"></div><h3>سوشيال ميديا</h3><p>توقعات مباريات ومحتوى منصات وثمبنيلز</p></a></div><div class="rv" style="--d:0.32s"><a class="g tilt wc" href="https://www.behance.net/mahmoudsalah_" target="_blank" rel="noopener"><div class="art a4"></div><h3>بروفايل وكتالوج</h3><p>بروفايل شركة وكتالوج منتجات</p></a></div></div>
-<div class="rv" style="text-align:center;margin-top:3rem"><a class="b s" href="https://www.behance.net/mahmoudsalah_" target="_blank" rel="noopener" data-t="wkb">شوف كل الأعمال على Behance</a></div></div></section>
+<section id="work"><div class="w"><div class="sh rv"><h2 data-t="wkh">أعمالي</h2><p data-t="wkp">لمحة من شغلي على Behance.</p></div><div class="gr wg" id="wk"><div class="rv" style="--d:0s"><article class="g tilt wc ft"><div class="wb"><span class="wn">01</span><span class="wt">هوية بصرية</span><h3>Litmatless</h3><p>هوية بصرية ونظام براندينج متكامل لبراند ملابس رياضية.</p><a class="b s sm wl" href="https://www.behance.net/mahmoudsalah_" target="_blank" rel="noopener noreferrer">افتح المشروع ↗</a></div></article></div><div class="rv" style="--d:0.08s"><article class="g tilt wc"><div class="wb"><span class="wn">02</span><span class="wt">حملة إعلانية</span><h3>حملة معرض أبواب مصفحة</h3><p>حملة كاملة لمعرض أبواب مصفحة.</p><a class="b s sm wl" href="https://www.behance.net/mahmoudsalah_" target="_blank" rel="noopener noreferrer">افتح المشروع ↗</a></div></article></div><div class="rv" style="--d:0.16s"><article class="g tilt wc"><div class="wb"><span class="wn">03</span><span class="wt">إعلان خارجي</span><h3>حملة بيلبورد</h3><p>حملة إعلان خارجي (بيلبورد) لبراند برجر.</p><a class="b s sm wl" href="https://www.behance.net/mahmoudsalah_" target="_blank" rel="noopener noreferrer">افتح المشروع ↗</a></div></article></div><div class="rv" style="--d:0.24s"><article class="g tilt wc"><div class="wb"><span class="wn">04</span><span class="wt">تصميم سوشيال</span><h3>سوشيال ميديا</h3><p>سيتات توقعات المباريات ومحتوى منصة Kodz وثمبنيلز الفيديو.</p><a class="b s sm wl" href="https://www.behance.net/mahmoudsalah_" target="_blank" rel="noopener noreferrer">افتح المشروع ↗</a></div></article></div><div class="rv" style="--d:0.32s"><article class="g tilt wc"><div class="wb"><span class="wn">05</span><span class="wt">مطبوعات</span><h3>كتالوج وبروفايل</h3><p>تصميم كتالوج منتجات (أبواب مصفحة) وبروفايل شركة.</p><a class="b s sm wl" href="https://www.behance.net/mahmoudsalah_" target="_blank" rel="noopener noreferrer">افتح المشروع ↗</a></div></article></div></div>
+<div class="rv" style="text-align:center;margin-top:3rem"><a class="b p bh" href="https://www.behance.net/mahmoudsalah_" target="_blank" rel="noopener" data-t="wkb">شوف كل الأعمال على Behance</a></div></div></section>
 
-<section id="about"><div class="w"><div class="g ab rv"><div><h2 data-t="abh">عنّي</h2><p data-t="abp" style="color:var(--mut);margin-top:1rem">أنا محمود صلاح، مصمم جرافيك بخبرة +1 سنة في السوشيال ميديا والمطبوعات والحملات الإعلانية، ودارس إدارة أعمال وتسويق رقمي. بشتغل مع فريق التسويق مباشرة علشان كل تصميم يطلع على هوية البراند وفي ميعاده.</p></div><div class="tg" id="tg"><span>Photoshop</span><span>Illustrator</span><span>Social Media</span><span>Print Design</span><span>Prepress</span><span>Color Management</span><span>Typography</span><span>Campaigns</span></div></div></div></section>
+<section id="about"><div class="w"><div class="g ab rv"><div><h2 data-t="abh">عنّي</h2><p data-t="abp" style="color:var(--mut);margin-top:1rem">أنا محمود صلاح، مصمم جرافيك ومسوّق بخبرة +1 سنة، بشتغل في التصميم والتسويق والميديا باينج. بجمع بين عين المصمم وعقل المسوّق: بصمم الهويات وتصميمات السوشيال والمطبوعات، وبدير حملات Meta Ads وبحسّن نتايجها بالأرقام، وبدرس المنافسين من Ads Library وبستخدم الذكاء الاصطناعي لتسريع الأفكار والتنفيذ. دارس إدارة أعمال وتسويق رقمي، وبشتغل مع فريق التسويق مباشرة علشان كل تصميم يخدم هدف واضح.</p></div><div class="tg" id="tg"><span>Design</span><span>Marketing</span><span>Media Buying</span><span>Photoshop</span><span>Illustrator</span><span>Meta Ads</span><span>Ads Library</span><span>AI</span></div></div></div></section>
 
 <section id="reviews"><div class="w"><div class="sh rv"><h2 data-t="rvh">آراء العملاء</h2><p data-t="rvp">تجربتك تفرق معانا، شاركها هنا.</p></div>
   <div class="gr" id="rg"></div><p class="em" id="re" data-t="rve">كن أول من يشارك تجربته معايا ✨</p>
   <form id="rf" class="g fm rv">
     <label class="f"><span data-t="fn">الاسم</span><input class="fi" name="n" required maxlength="40" autocomplete="name"></label>
+    <label class="f"><span data-t="fr">الصفة أو اسم المشروع</span><input class="fi" name="ro" maxlength="60" autocomplete="organization-title"></label>
     <div class="f" id="stars" role="group" aria-label="Rating"></div>
     <label class="f"><span data-t="rvt">اكتب تجربتك مع الخدمة</span><textarea class="fi" name="t" required maxlength="400"></textarea></label>
     <input name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;opacity:0;pointer-events:none;height:0">
@@ -222,7 +237,7 @@ footer a{display:inline-block;margin:.4rem .9rem;font-weight:500;transition:colo
 </div></section>
 
 <section id="contact"><div class="w"><div class="g ctab rv"><h2 data-t="cth">جاهز نبدأ مشروعك؟</h2><p data-t="ctp">ابعتلي التفاصيل وهرد عليك على واتساب.</p>
-  <div class="cr" style="justify-content:center"><button class="b p" data-o="d" data-t="c1">اطلب تصميم</button><button class="b s" data-o="m" data-t="c2">اطلب خدمة تسويق</button></div></div></div></section>
+  <div class="cr" style="justify-content:center"><button class="b p" data-o="d" data-t="c1">اطلب تصميم</button><button class="b p mk" data-o="m" data-t="c2">اطلب خدمة تسويق</button></div></div></div></section>
 </main>
 
 <footer><div class="w"><div><a href="https://www.behance.net/mahmoudsalah_" target="_blank" rel="noopener">Behance</a><a href="https://wa.me/201554276428" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:ms.5742953@gmail.com">Email</a></div><p>© <span id="yr">2026</span> Mahmoud Salah</p></div></footer>
@@ -240,39 +255,46 @@ footer a{display:inline-block;margin:.4rem .9rem;font-weight:500;transition:colo
 </form></dialog>
 
 <script>
+/* ===== آراء العملاء المشتركة =====
+   حط هنا رابط الـ Web App الخاص بـ Google Apps Script (اللي بينتهي بـ /exec) بين علامتي التنصيص.
+   الشيت: https://docs.google.com/spreadsheets/d/1hOfd0TOGiA07p42J-4Xelud1fbMH_rqQHN6TgBfWD_Q/edit
+   الأعمدة: timestamp, name, role, rating, review, approved
+   GET بيرجّع {ok:true,reviews:[{n,ro,t,r}]} و POST بيستقبل {n,ro,t,r}. فاضي = آراء تجريبية من غير أخطاء. */
+const REVIEWS_API_URL = "";
 (()=>{
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)],D=document.documentElement;
 const WA='201554276428',BE='https://www.behance.net/mahmoudsalah_';
 const ls={g:k=>{try{return localStorage.getItem(k)}catch(e){return null}},s:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
-/* آراء العملاء الحقيقية: ضيفها هنا {n:"الاسم",t:"التعليق",r:5} */
-const REVIEWS=[];
-/* ===== آراء مشتركة لكل الزوار (GitHub Pages = استضافة ثابتة، فمحتاجين endpoint خارجي) =====
-   1) اعمل Google Sheet واستخدم reviews-apps-script.gs (الخطوات في أول الملف ده)
-   2) الصق رابط الـ Web App هنا بين العلامتين. سيبه فاضي = الآراء بتظهر على جهاز صاحبها بس.
-   - GET بيرجّع {ok:true,reviews:[{id,n,t,r}]} و POST بيستقبل {id,n,t,r} ويرجّع {ok:true}
-   - localStorage ('rvp') بيحفظ الرأي فوراً للمستخدم الحالي لحد ما يتبعت للسيرفر، وبيتعاد إرساله تلقائياً */
-const REVIEWS_API='';
-const IC=['📱','🎨','🖨️','📣','📈','✨'],TOOLS=['Photoshop','Illustrator','Social Media','Print Design','Prepress','Color Management','Typography','Campaigns'],MQ=['Social Media','Branding','Print','Packaging','Billboards','Campaigns','Marketing','Logos'];
+/* آراء تجريبية: بتظهر بس لما REVIEWS_API_URL يكون فاضي (علشان الموقع يشتغل فوراً). أول ما تربط الشيت بتختفي. */
+const DEMO_REVIEWS=[{n:"عميل تجريبي",ro:"صاحب مشروع",t:"شكل الرأي هيظهر كده بعد ما العملاء يبدأوا يكتبوا تجاربهم.",r:5,demo:true},{n:"Sample Client",ro:"Brand owner",t:"This is a placeholder review until the Google Sheet is connected.",r:5,demo:true}];
+const IC=['🎨','🪪','🖨️','📱','📈','🎯','📣','🤖'],TOOLS=['Design','Marketing','Media Buying','Photoshop','Illustrator','Meta Ads','Ads Library','AI'],MQ=['Design','Marketing','Media Buying','Meta Ads','Ads Library','AI','Branding','Print'];
+/* كل خدمة بتفتح النافذة المناسبة (d=تصميم, m=تسويق) وتختار نوع الخدمة تلقائياً */
+const SVK=[['d',''],['d',''],['d',''],['d','منشور سوشيال'],['m','خطة تسويق'],['m','ميديا باينج'],['m','حملات إعلانية'],['m','حلول بالذكاء الاصطناعي']];
+/* أعمالي (مرتبة من الأقوى): مشروع واحد لكل كارت بنفس ترتيب T.wk.
+   WIMG = رابط الصورة المصغرة لكل مشروع (بتتقص 16:10 تلقائياً). '' = الكارت بيتعرض بدون أي صورة أو مربع فاضي. لو الرابط فشل الصورة بتتشال لوحدها.
+   WURL = رابط المشروع نفسه على Behance (حاليا بروفايلك لحد ما تحط الروابط). */
+const WIMG=['','','','',''];
+const WURL=[BE,BE,BE,BE,BE];
 /* اللوجو كـ SVG تقريبي: استبدل الـ paths بالـ Image Trace من Illustrator للنسخة الدقيقة */
 const LOGO='<svg viewBox="-4 -3 130 96" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" style="--k:0" d="M102 6H26C6 6 2 30 26 29H46L28 56"/><path pathLength="1" style="--k:1;stroke-width:14" d="M66 24L46 54"/><path pathLength="1" style="--k:2;stroke-width:14" d="M88 24L68 54"/><path pathLength="1" style="--k:3" d="M12 84H98C120 84 120 57 96 57H84L106 24"/></svg>';
 const T={
-ar:{n1:"خدماتي",n2:"أعمالي",n3:"آراء العملاء",n4:"تواصل",nc:"ابدأ مشروعك",bd:"متاح لمشاريع جديدة",h1:"تصميم بصري وتسويق ذكي يبني علامات قوية",sub:"مصمم جرافيك ومسوّق رقمي، بحوّل فكرتك لتصميم احترافي وخطة تسويق توصّلك لعملائك.",c1:"اطلب تصميم",c2:"اطلب خدمة تسويق",s1:"سنة خبرة",s2:"مجالات: سوشيال، مطبوعات، حملات",s3:"برامج: Photoshop وIllustrator",
-svh:"خدماتي",svp:"كل اللي براندك محتاجه في مكان واحد.",
-sv:[["سوشيال ميديا","بوستات وستوريز وبانرات لإنستجرام وفيسبوك بهوية ثابتة وواضحة."],["هوية بصرية","لوجو ونظام هوية كامل يخلّي براندك مميز ومتذكَّر."],["مطبوعات وتغليف","فلايرز وبروشورات وباكدجينج جاهزة للطباعة بألوان مظبوطة."],["حملات إعلانية","بيلبورد وPOS وتصميمات معارض بتلفت الانتباه من أول نظرة."],["تسويق رقمي","خطط ومحتوى وإدارة صفحات علشان توصل للعميل المناسب."],["ريتاتش وتصميم رقمي","ريتاتش وكومبوزيت وأعمال رقمية بجودة عالية."]],
+ar:{n1:"خدماتي",n2:"أعمالي",n3:"آراء العملاء",n4:"تواصل",nc:"ابدأ مشروعك",bd:"متاح لمشاريع جديدة",h1:"تصميم بصري وتسويق ذكي يبني علامات قوية",sub:"مصمم جرافيك ومسوّق رقمي، بحوّل فكرتك لتصميم احترافي وخطة تسويق توصّلك لعملائك.",c1:"اطلب تصميم",c2:"اطلب خدمة تسويق",s1:"سنة خبرة",s2:"مجالات: تصميم · ماركتنج · ميديا باينج",s3:"أدوات: Photoshop · Illustrator · Meta Ads · Ads Library · AI",
+svh:"خدماتي",svp:"من التصميم للتسويق والميديا باينج: كل اللي براندك محتاجه في مكان واحد.",
+sv:[["التصميم الجرافيكي","بوستات وإعلانات وتصميمات بصرية بتلفت الانتباه وبتوصّل رسالتك بوضوح."],["الهويات البصرية","لوجو ونظام هوية متكامل يخلّي براندك مميز ومتذكَّر."],["المطبوعات والتغليف","فلايرز وبروشورات وكتالوجات وباكدجينج جاهزة للطباعة بألوان مظبوطة."],["السوشيال ميديا","بوستات وستوريز وأغلفة بهوية ثابتة على كل منصاتك."],["التسويق","خطة تسويق واضحة تحدد جمهورك ورسالتك وقنوات الوصول ليهم."],["الميديا باينج","إدارة إعلانات ممولة على Meta Ads، وبحث المنافسين عبر Ads Library، وتحسين النتائج بالأرقام."],["حملات الإعلانات","حملات متكاملة من الفكرة والتصميم لحد التنفيذ والمتابعة."],["أدوات الذكاء الاصطناعي","استخدام AI في الأفكار والتحليل والتصميم لتسريع الشغل وتحسين الجودة."]],
 wkh:"أعمالي",wkp:"لمحة من شغلي على Behance.",wkb:"شوف كل الأعمال على Behance",
-wk:[["Litmatless","هوية بصرية لبراند ملابس رياضية"],["حملة بيلبورد","إعلان خارجي لبراند برجر"],["حملة معرض","حملة كاملة لمعرض أبواب مصفحة"],["سوشيال ميديا","توقعات مباريات ومحتوى منصات وثمبنيلز"],["بروفايل وكتالوج","بروفايل شركة وكتالوج منتجات"]],
-abh:"عنّي",abp:"أنا محمود صلاح، مصمم جرافيك بخبرة +1 سنة في السوشيال ميديا والمطبوعات والحملات الإعلانية، ودارس إدارة أعمال وتسويق رقمي. بشتغل مع فريق التسويق مباشرة علشان كل تصميم يطلع على هوية البراند وفي ميعاده.",
+wk:[["Litmatless","هوية بصرية","هوية بصرية ونظام براندينج متكامل لبراند ملابس رياضية."],["حملة معرض أبواب مصفحة","حملة إعلانية","حملة كاملة لمعرض أبواب مصفحة."],["حملة بيلبورد","إعلان خارجي","حملة إعلان خارجي (بيلبورد) لبراند برجر."],["سوشيال ميديا","تصميم سوشيال","سيتات توقعات المباريات ومحتوى منصة Kodz وثمبنيلز الفيديو."],["كتالوج وبروفايل","مطبوعات","تصميم كتالوج منتجات (أبواب مصفحة) وبروفايل شركة."]],
+abh:"عنّي",abp:"أنا محمود صلاح، مصمم جرافيك ومسوّق بخبرة +1 سنة، بشتغل في التصميم والتسويق والميديا باينج. بجمع بين عين المصمم وعقل المسوّق: بصمم الهويات وتصميمات السوشيال والمطبوعات، وبدير حملات Meta Ads وبحسّن نتايجها بالأرقام، وبدرس المنافسين من Ads Library وبستخدم الذكاء الاصطناعي لتسريع الأفكار والتنفيذ. دارس إدارة أعمال وتسويق رقمي، وبشتغل مع فريق التسويق مباشرة علشان كل تصميم يخدم هدف واضح.",
 rvh:"آراء العملاء",rvp:"تجربتك تفرق معانا، شاركها هنا.",rve:"كن أول من يشارك تجربته معايا ✨",fn:"الاسم",rvt:"اكتب تجربتك مع الخدمة",rvs:"انشر رأيك",
-cth:"جاهز نبدأ مشروعك؟",ctp:"ابعتلي التفاصيل وهرد عليك على واتساب.",fp:"رقم الموبايل",fv:"الخدمة المطلوبة",fd:"وصف المشروع",pd:"احكيلي عن فكرتك وهدفك…",send:"ابعت على واتساب",dt:"طلب تصميم",mt:"طلب خدمة تسويق",rl:"جاري النشر…",ro:"تم نشر رأيك، شكراً ليك 💙",re2:"حصلت مشكلة في الاتصال، رأيك اتحفظ مؤقتاً وهيتبعت تلقائياً."},
-en:{n1:"Services",n2:"Work",n3:"Reviews",n4:"Contact",nc:"Start a project",bd:"Open for new projects",h1:"Visual design and smart marketing that build strong brands",sub:"Graphic designer & digital marketer. I turn your idea into polished design and marketing that reaches your customers.",c1:"Request a design",c2:"Request marketing",s1:"Years of experience",s2:"Fields: social, print, campaigns",s3:"Tools: Photoshop & Illustrator",
-svh:"What I do",svp:"Everything your brand needs, in one place.",
-sv:[["Social Media","Posts, stories and banners for Instagram and Facebook with a consistent look."],["Brand Identity","Logos and full identity systems that make your brand memorable."],["Print & Packaging","Flyers, brochures and packaging, print-ready with accurate color."],["Ad Campaigns","Billboards, POS and exhibition design that grab attention instantly."],["Digital Marketing","Plans, content and page management to reach the right customer."],["Retouch & Digital Art","Retouching, compositing and high-quality digital artwork."]],
+cth:"جاهز نبدأ مشروعك؟",ctp:"ابعتلي التفاصيل وهرد عليك على واتساب.",fp:"رقم الموبايل",fv:"الخدمة المطلوبة",fd:"وصف المشروع",pd:"احكيلي عن فكرتك وهدفك…",send:"ابعت على واتساب",dt:"طلب تصميم",mt:"طلب خدمة تسويق",fr:"الصفة أو اسم المشروع",dm:"رأي تجريبي",lo:"وضع تجريبي: رأيك ظاهر عندك بس لحد ما يتم ربط الشيت.",sb:"اطلب الخدمة",wo:"افتح المشروع ↗",rl:"جاري النشر…",ro:"تم نشر رأيك، شكراً ليك 💙",re2:"حصلت مشكلة في الاتصال، رأيك اتحفظ مؤقتاً وهيتبعت تلقائياً."},
+en:{n1:"Services",n2:"Work",n3:"Reviews",n4:"Contact",nc:"Start a project",bd:"Open for new projects",h1:"Visual design and smart marketing that build strong brands",sub:"Graphic designer & digital marketer. I turn your idea into polished design and marketing that reaches your customers.",c1:"Request a design",c2:"Request marketing",s1:"Years of experience",s2:"Fields: Design · Marketing · Media Buying",s3:"Tools: Photoshop · Illustrator · Meta Ads · Ads Library · AI",
+svh:"What I do",svp:"From design to marketing and media buying: everything your brand needs in one place.",
+sv:[["Graphic Design","Posts, ads and visuals that grab attention and deliver your message clearly."],["Brand Identity","Logos and full identity systems that make your brand memorable."],["Print & Packaging","Flyers, brochures, catalogs and packaging, print-ready with accurate color."],["Social Media","Posts, stories and covers with a consistent look across your platforms."],["Marketing","A clear marketing plan: audience, message and the channels to reach them."],["Media Buying","Paid ads on Meta Ads, competitor research via Ads Library, results optimized by the numbers."],["Ad Campaigns","Full campaigns from idea and design through launch and follow-up."],["AI Tools","AI for ideas, analysis and design to work faster and raise quality."]],
 wkh:"Selected work",wkp:"A glimpse of my projects on Behance.",wkb:"See all work on Behance",
-wk:[["Litmatless","Brand identity for a sportswear brand"],["Billboard Campaign","Outdoor ads for a burger brand"],["Exhibition Campaign","Full campaign for an armored-doors exhibition"],["Social Media","Match predictions, platform content, thumbnails"],["Profile & Catalog","Company profile and product catalog"]],
-abh:"About",abp:"I'm Mahmoud Salah, a graphic designer with 1+ year across social media, print and ad campaigns, studying Business Administration & Digital Marketing. I work directly with marketing teams so every design stays on-brand and on time.",
+wk:[["Litmatless","Brand identity","Brand identity and full branding system for a sportswear brand."],["Armored-Doors Exhibition","Ad campaign","A full campaign for an armored-doors exhibition."],["Burger Billboard","Outdoor ad","An outdoor (billboard) campaign for a burger brand."],["Social Media","Social design","Match-prediction sets, Kodz platform content and video thumbnails."],["Catalog & Profile","Print","A product catalog (armored doors) and a company profile design."]],
+abh:"About",abp:"I'm Mahmoud Salah, a graphic designer and marketer with 1+ year across design, marketing and media buying. I combine a designer's eye with a marketer's mind: identities, social and print design, Meta Ads campaigns optimized by the numbers, competitor research in Ads Library, and AI to speed up ideas and delivery. I study Business Administration & Digital Marketing and work directly with marketing teams so every design serves a clear goal.",
 rvh:"Client reviews",rvp:"Your experience matters. Share it here.",rve:"Be the first to share your experience ✨",fn:"Your name",rvt:"Write about your experience",rvs:"Post review",
-cth:"Ready to start your project?",ctp:"Send me the details and I'll reply on WhatsApp.",fp:"Phone number",fv:"Service needed",fd:"Project description",pd:"Tell me about your idea and goal…",send:"Send via WhatsApp",dt:"Design request",mt:"Marketing request",rl:"Posting…",ro:"Your review is live. Thank you 💙",re2:"Connection problem. Your review is saved on this device and will retry automatically."}};
-const OPT={d:[["منشور سوشيال","Social post"],["ستوري","Story"],["غلاف","Cover"],["بانر","Banner"],["كارت شخصي","Business card"],["أخرى","Other"]],m:[["إدارة سوشيال ميديا","Social media management"],["إعلانات ممولة","Paid ads"],["خطة تسويق","Marketing plan"],["أخرى","Other"]]};
+cth:"Ready to start your project?",ctp:"Send me the details and I'll reply on WhatsApp.",fp:"Phone number",fv:"Service needed",fd:"Project description",pd:"Tell me about your idea and goal…",send:"Send via WhatsApp",dt:"Design request",mt:"Marketing request",fr:"Role or project name",dm:"Sample review",lo:"Demo mode: your review shows on this device until the sheet is connected.",sb:"Request this",wo:"Open project ↗",rl:"Posting…",ro:"Your review is live. Thank you 💙",re2:"Connection problem. Your review is saved on this device and will retry automatically."}};
+const OPT={d:[["منشور سوشيال","Social post"],["ستوري","Story"],["غلاف","Cover"],["بانر","Banner"],["كارت شخصي","Business card"],["أخرى","Other"]],m:[["إدارة سوشيال ميديا","Social media management"],["ميديا باينج","Media buying"],["حملات إعلانية","Ad campaigns"],["خطة تسويق","Marketing plan"],["حلول بالذكاء الاصطناعي","AI solutions"],["أخرى","Other"]]};
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
 let L=ls.g('l')==='en'?'en':'ar',rate=5,kind='d',srv=[],pend=[];
 try{pend=JSON.parse(ls.g('rvp')||'[]')}catch(e){}
@@ -283,25 +305,29 @@ function setL(l){
   $$('[data-p]').forEach(e=>e.placeholder=t[e.dataset.p]);
   $$('#lg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l));
   $('h1').innerHTML=t.h1.split(' ').map((w,i)=>`<span data-h style="--i:${i+1};display:inline-block">${w}</span>`).join(' ');
-  $('#sv').innerHTML=t.sv.map(([a,b],i)=>`<div class="rv" style="--d:${i*.08}s"><article class="g tilt sc"><div class="ico">${IC[i]}</div><h3>${a}</h3><p>${b}</p></article></div>`).join('');
-  $('#wk').innerHTML=t.wk.map(([a,b],i)=>`<div class="rv" style="--d:${i*.08}s"><a class="g tilt wc" href="${BE}" target="_blank" rel="noopener"><div class="art a${i}"></div><h3>${a}</h3><p>${b}</p></a></div>`).join('');
+  $('#sv').innerHTML=t.sv.map(([a,b],i)=>`<div class="rv" style="--d:${i*.08}s"><article class="g tilt sc"><div class="ico">${IC[i]}</div><h3>${a}</h3><p>${b}</p><button class="b s sm" type="button" data-o="${SVK[i][0]}" data-pre="${SVK[i][1]}">${t.sb}</button></article></div>`).join('');
+  $('#wk').innerHTML=t.wk.map(([a,ty,b],i)=>`<div class="rv" style="--d:${i*.08}s"><article class="g tilt wc${i?'':' ft'}">${WIMG[i]?`<div class="art"><img src="${WIMG[i]}" alt="${a}" width="640" height="400" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></div>`:''}<div class="wb"><span class="wn">0${i+1}</span><span class="wt">${ty}</span><h3>${a}</h3><p>${b}</p><a class="b s sm wl" href="${WURL[i]}" target="_blank" rel="noopener noreferrer">${t.wo}</a></div></article></div>`).join('');
   $$('.rv:not(.in)').forEach(e=>io.observe(e));
 }
 function setT(t){D.dataset.theme=t;ls.s('t',t);$$('#th button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===t))}
 function drawRv(){
-  const box=$('#rg');box.textContent='';const all=[...pend].reverse().concat([...srv].reverse(),REVIEWS);$('#re').hidden=all.length>0;
-  all.slice(0,24).forEach((r,i)=>{const w=document.createElement('div'),a=document.createElement('article'),s=document.createElement('div'),p=document.createElement('p'),n=document.createElement('b');
-    w.className='rv';w.style.setProperty('--d',i*.06+'s');a.className='g tilt rc';s.className='st';s.textContent='★'.repeat(r.r)+'☆'.repeat(5-r.r);p.textContent=r.t;n.textContent=r.n;
-    a.append(s,p,n);w.append(a);box.append(w);io.observe(w)});
+  const box=$('#rg');box.textContent='';
+  const all=[...pend].reverse().concat([...srv].reverse(),REVIEWS_API_URL?[]:DEMO_REVIEWS);$('#re').hidden=all.length>0;
+  all.slice(0,24).forEach((r,i)=>{const w=document.createElement('div'),a=document.createElement('article'),s=document.createElement('div'),p=document.createElement('p'),n=document.createElement('b'),k=Math.min(5,Math.max(1,Number(r.r)||5));
+    w.className='rv';w.style.setProperty('--d',i*.06+'s');a.className='g tilt rc';s.className='st';
+    s.textContent='★'.repeat(k)+'☆'.repeat(5-k);p.textContent=r.t;n.textContent=r.n;a.append(s,p,n); /* textContent فقط = حماية من أي كود ضار */
+    if(r.ro){const m=document.createElement('small');m.textContent=r.ro;a.append(m)}
+    if(r.demo){const d=document.createElement('span');d.className='tag';d.textContent=T[L].dm;a.append(d)}
+    w.append(a);box.append(w);io.observe(w)});
 }
 async function loadRv(){
-  if(!REVIEWS_API)return;
-  try{const r=await fetch(REVIEWS_API,{cache:'no-store'}),j=await r.json();if(Array.isArray(j.reviews)){srv=j.reviews;drawRv()}}
+  if(!REVIEWS_API_URL)return;
+  try{const r=await fetch(REVIEWS_API_URL,{cache:'no-store'}),j=await r.json();if(Array.isArray(j.reviews)){srv=j.reviews.map(x=>({n:String(x.n||'').slice(0,40),ro:String(x.ro||'').slice(0,60),t:String(x.t||'').slice(0,400),r:Number(x.r)||5}));drawRv()}}
   catch(e){console.warn('reviews: load failed',e)}
 }
 async function send(r){
-  if(!REVIEWS_API)return false;
-  const res=await fetch(REVIEWS_API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(r)});
+  if(!REVIEWS_API_URL)return false;
+  const res=await fetch(REVIEWS_API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(r)});
   return (await res.json()).ok===true;
 }
 async function flush(){
@@ -309,8 +335,8 @@ async function flush(){
   ls.s('rvp',JSON.stringify(pend));drawRv();
 }
 function paint(){[...$('#stars').children].forEach((b,i)=>b.classList.toggle('on',i<rate))}
-function openF(k){kind=k;$('#dt').textContent=T[L][k==='d'?'dt':'mt'];
-  $('#opts').innerHTML=OPT[k].map(([a,e],i)=>`<label class="cp"><input type="radio" name="s" value="${a}"${i?'':' required'}><span>${L==='ar'?a:e}</span></label>`).join('');$('#dlg').showModal()}
+function openF(k,pre){kind=k;$('#dt').textContent=T[L][k==='d'?'dt':'mt'];
+  $('#opts').innerHTML=OPT[k].map(([a,e],i)=>`<label class="cp"><input type="radio" name="s" value="${a}"${i?'':' required'}><span>${L==='ar'?a:e}</span></label>`).join('');if(pre){const i=$$('#opts input').find(x=>x.value===pre);if(i)i.checked=true}$('#dlg').showModal()}
 
 $$('.lgo').forEach(e=>e.innerHTML=LOGO);
 $('.mq div').innerHTML=[...MQ,...MQ].map(w=>`<span>${w}</span>`).join('');
@@ -322,7 +348,7 @@ $$('.rv').forEach(e=>io.observe(e));
 
 $('#lg').onclick=e=>{const b=e.target.closest('button');if(b)setL(b.dataset.l)};
 $('#th').onclick=e=>{const b=e.target.closest('button');if(b)setT(b.dataset.m)};
-document.addEventListener('click',e=>{const o=e.target.closest('[data-o]');if(o)openF(o.dataset.o)});
+document.addEventListener('click',e=>{const o=e.target.closest('[data-o]');if(o)openF(o.dataset.o,o.dataset.pre)});
 $('.x').onclick=()=>$('#dlg').close();
 $('#dlg').addEventListener('click',e=>{if(e.target.id==='dlg')e.target.close()});
 $('#fm').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target);
@@ -330,9 +356,10 @@ $('#fm').onsubmit=e=>{e.preventDefault();const d=new FormData(e.target);
   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(m)}`,'_blank','noopener');e.target.reset();$('#dlg').close()};
 $('#rf').onsubmit=async e=>{e.preventDefault();const f=new FormData(e.target),btn=$('#rf .b'),st=$('#rs');
   if(f.get('hp'))return;
-  const r={id:Date.now()+'-'+Math.random().toString(36).slice(2,7),n:String(f.get('n')).trim().slice(0,40),t:String(f.get('t')).trim().slice(0,400),r:rate};
+  const r={id:Date.now()+'-'+Math.random().toString(36).slice(2,7),n:String(f.get('n')).trim().slice(0,40),ro:String(f.get('ro')||'').trim().slice(0,60),t:String(f.get('t')).trim().slice(0,400),r:rate};
   pend.push(r);ls.s('rvp',JSON.stringify(pend.slice(-20)));drawRv();
-  e.target.reset();rate=5;paint();btn.disabled=true;st.className='rs';st.textContent=T[L].rl;
+  e.target.reset();rate=5;paint();if(!REVIEWS_API_URL){st.className='rs ok';st.textContent=T[L].lo;return}
+  btn.disabled=true;st.className='rs';st.textContent=T[L].rl;
   try{if(await send(r)){pend=pend.filter(x=>x.id!==r.id);srv.push(r);ls.s('rvp',JSON.stringify(pend));st.className='rs ok';st.textContent=T[L].ro}else throw 0}
   catch(err){st.className='rs er';st.textContent=T[L].re2}
   btn.disabled=false;drawRv()};
